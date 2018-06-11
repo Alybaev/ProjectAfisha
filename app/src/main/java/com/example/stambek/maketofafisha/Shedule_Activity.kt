@@ -2,8 +2,10 @@ package com.example.stambek.maketofafisha
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.stambek.maketofafisha.Model.Feed
+import kotlinx.android.synthetic.main.activity_shedule_.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,6 +42,11 @@ class Shedule_Activity : AppCompatActivity() {
                     nameOfCinema[i] = cinemas?.result?.unmain[i]?.name!!
                     i++
                 }
+                list_view.adapter = ( ArrayAdapter<String>(
+                        this@Shedule_Activity,
+                        android.R.layout.simple_list_item_1,
+                        nameOfCinema
+                ))
 
             }
 
