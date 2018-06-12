@@ -16,6 +16,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import android.widget.AdapterView
 import com.example.stambek.maketofafisha.utils.Constants.Companion.BASE_URL
 import com.example.stambek.maketofafisha.utils.NetWork
+import android.widget.AdapterView.OnItemClickListener
+import android.support.v7.widget.RecyclerView
+
+
 
 
 class Shedule_Activity : AppCompatActivity() {
@@ -36,30 +40,27 @@ class Shedule_Activity : AppCompatActivity() {
 
             override fun onResponse(call: Call<Cinema>?, response: Response<Cinema>?) {
                 val cinemas = response!!.body()
-                val nameOfCinema = arrayOfNulls<String>(cinemas?.result?.unmain?.size!!)
+                val nameOfCinema =  ArrayList<String>()
                 val idOfCinema = arrayOfNulls<String>(cinemas?.result?.unmain?.size!!)
-                val addressOfCinema = arrayOfNulls<String>(cinemas?.result?.unmain?.size!!)
+                val addressOfCinema =  ArrayList<String>()
 
                 var i = 0
                 while(i<cinemas?.result?.unmain?.size){
-                    nameOfCinema[i] = cinemas?.result?.unmain[i]?.name!!
-                    addressOfCinema[i] = cinemas?.result?.unmain[i]?.address!!
+                    nameOfCinema.add(cinemas?.result?.unmain[i]?.name!!)
+                    addressOfCinema.add(cinemas?.result?.unmain[i]?.address!!)
                     i++
                 }
-                list_view.adapter = ( ArrayAdapter<String>(
-                        this@Shedule_Activity,
-                        android.R.layout.simple_list_item_1,
-                        nameOfCinema
-                ))
-                list_view.onItemClickListener = object : AdapterView.OnItemClickListener {
-                    override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                list_view.adapter = MAdaper(nameOfCinema,addressOfCinema)
 
-                        intent = Intent(applicationContext, SecondActivity::class.java)
-                        intent.putExtra("idOfCinema", cinemas?.result?.unmain[position].id.toString())
-                        startActivity(intent)
-
-                    }
-                }
+                list_view.addOnItemTouchListener(
+                        RecyclerItemClickListener(this@Shedule_Activity, list_view, object : RecyclerViewItemClickListener.OnItemClickListener() {
+                            fun onItemClick(view: View, position: Int) {
+                                intent = Intent(applicationContext, SecondActivity::class.java)
+                                intent.putExtra("idOfCinema", cinemas?.result?.unmain[position].id.toString())
+                                startActivity(intent)
+                            }
+                        })
+                )
 
 
             }

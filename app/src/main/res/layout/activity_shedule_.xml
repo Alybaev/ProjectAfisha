@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cinema_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,20 +10,20 @@
         android:id="@+id/title_cinema"
         android:layout_width="match_parent"
         android:layout_height="37dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
+        android:paddingStart="@dimen/padding_left_right"
+        android:paddingEnd="@dimen/padding_left_right"
         android:paddingTop="6dp"
 
         android:textColor="@color/colorPrimaryDark"
         android:text="@string/title_cinema"
-        android:textSize="20sp"
+        android:textSize="@dimen/title_size"
         app:layout_constraintBottom_toTopOf="@+id/list_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/list_view"
         android:layout_width="367dp"
         android:layout_height="495dp"

@@ -49,11 +49,7 @@ class SecondActivity : AppCompatActivity() {
                     i++
                 }
 
-                list_view2.adapter = (ArrayAdapter<String>(
-                        this@SecondActivity,
-                        android.R.layout.simple_list_item_1,
-                        nameOfMovies
-                ) as ListAdapter?)
+                list_view2.adapter = MAdaper(this@SecondActivity,nameOfMovies,nameOfMovies)
             }
 
             override fun onFailure(call: Call<Movie>?, t: Throwable?) {
