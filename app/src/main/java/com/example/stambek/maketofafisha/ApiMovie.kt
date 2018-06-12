@@ -4,13 +4,13 @@ import com.example.stambek.maketofafisha.ModelOfApiCinema.Cinema
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface ApiCinema {
+interface ApiMovie {
 
     companion object {
         final val BASE_URL = "https://kinoafisha.ua/ajax/"
     }
 
-    @GET("kinoteatrs_load/")
+    @GET("kinoafisha_load/")
     fun getData(): Call<Cinema>
 
 }
