@@ -14,14 +14,12 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import android.widget.AdapterView
-
+import com.example.stambek.maketofafisha.utils.Constants.Companion.BASE_URL
+import com.example.stambek.maketofafisha.utils.NetWork
 
 
 class Shedule_Activity : AppCompatActivity() {
 
-    companion object {
-        private val BASE_URL = "https://kinoafisha.ua/ajax/"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +29,7 @@ class Shedule_Activity : AppCompatActivity() {
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
                 .build()
-        val apiCinema = retrofit.create(ApiCinema::class.java)
+        val apiCinema = NetWork.retrofit.create(ApiCinema::class.java)
         val call = apiCinema.getData()
 
         call.enqueue(object : Callback<Cinema>{
