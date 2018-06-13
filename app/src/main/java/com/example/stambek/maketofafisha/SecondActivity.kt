@@ -38,6 +38,8 @@ class SecondActivity : AppCompatActivity() {
                 val movies = response!!.body()
 
                 val nameOfMovies = ArrayList<String>()
+                val timeOfMovies = ArrayList<String>()
+                val hallOfMovies = ArrayList<String>()
 
                 var i = 0
                 while(i < movies?.result!!.size){
@@ -45,13 +47,24 @@ class SecondActivity : AppCompatActivity() {
                     while(j < movies!!.result[i]!!.sessions.size){
                         if (movies!!.result[i]!!.sessions[j].k_id ==idOfCinema || movies!!.result[i]!!.sessions[j].k_id == null){
                             nameOfMovies.add(movies?.result[i].name)
+
+                            var changeStr = movies!!.result[i]!!.sessions[j].sessions
+                            var changeStrAr = changeStr.toCharArray()
+                            if(changeStrAr[changeStr.length - 10] != 'p')
+                                changeStr = changeStr.substring(changeStr.length - 15, changeStr.length - 10)
+                            else{
+                                changeStr = changeStr.substring(changeStr.length - 18, changeStr.length - 13)
+                            }
+                            timeOfMovies.add(changeStr)
+
+                            hallOfMovies.add(movies!!.result[i]!!.sessions[j].h_name)
                         }
                        j++
                     }
                     i++
                 }
                 list_view2.layoutManager = LinearLayoutManager(this@SecondActivity)
-               list_view2.adapter = MovieAdapter(nameOfMovies,nameOfMovies)
+               list_view2.adapter = MovieAdapter(nameOfMovies,timeOfMovies,hallOfMovies)
             }
 
             override fun onFailure(call: Call<Movie>?, t: Throwable?) {
