@@ -43,7 +43,7 @@ class SecondActivity : AppCompatActivity() {
                 while(i < movies?.result!!.size){
                     var j = 0
                     while(j < movies!!.result[i]!!.sessions.size){
-                        if (movies!!.result[i]!!.sessions[j].k_id ==idOfCinema){
+                        if (movies!!.result[i]!!.sessions[j].k_id ==idOfCinema || movies!!.result[i]!!.sessions[j].k_id == null){
                             nameOfMovies.add(movies?.result[i].name)
                         }
                        j++

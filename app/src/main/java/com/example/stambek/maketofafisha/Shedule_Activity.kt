@@ -40,15 +40,13 @@ class Shedule_Activity : AppCompatActivity() {
 
                 var i = 0
                 while(i< cinemas?.result?.unmain?.size!!){
-                    idOfCinema.add(cinemas?.result?.unmain!![i]?.id)
+                    idOfCinema.add(cinemas?.result?.unmain!![i]?.id!!)
                     nameOfCinema.add(cinemas?.result?.unmain[i]?.name!!)
                     addressOfCinema.add(cinemas?.result?.unmain[i]?.address!!)
                     i++
                 }
                 list_view.layoutManager= LinearLayoutManager(this@Shedule_Activity)
-                list_view.adapter = CinemaAdapter(this@Shedule_Activity,nameOfCinema,addressOfCinema,nameOfCinema)
-
-
+                list_view.adapter = CinemaAdapter(this@Shedule_Activity,nameOfCinema,addressOfCinema,idOfCinema)
 
 
             }

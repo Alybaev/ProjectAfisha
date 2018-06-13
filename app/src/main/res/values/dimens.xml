@@ -2,6 +2,7 @@
 <resources>
     <dimen name="padding_left_right">20dp</dimen>
     <dimen name="title_size">20sp</dimen>
-    <dimen name="secondary_size">9sp</dimen>
-    <dimen name="primary_size">14sp</dimen>
+    <dimen name="secondary_size">10sp</dimen>
+    <dimen name="primary_size">18sp</dimen>
+    <dimen name="margin_bottom">5sp</dimen>
 </resources>

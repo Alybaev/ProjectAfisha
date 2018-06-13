@@ -26,7 +26,7 @@ class CinemaAdapter(var context:Context, var data: ArrayList<String>, var data2:
         holder.layout.setOnClickListener (object : View.OnClickListener{
             override fun onClick(p0: View?) {
                 val intent = Intent(context, SecondActivity::class.java)
-                intent.putExtra("idOfCinemaa", data3.get(position))
+                intent.putExtra("idOfCinema", data3[position])
                 context.startActivity(intent)
             }
 
