@@ -2,8 +2,10 @@ package com.example.stambek.maketofafisha
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.widget.ArrayAdapter
 import android.widget.ListAdapter
+import android.widget.Toast
 import com.example.stambek.maketofafisha.ModelOfApiMovie.Movie
 import com.example.stambek.maketofafisha.utils.Constants
 import com.example.stambek.maketofafisha.utils.Constants.Companion.BASE_URL
@@ -48,12 +50,12 @@ class SecondActivity : AppCompatActivity() {
                     }
                     i++
                 }
-
-                list_view2.adapter = MAdaper(this@SecondActivity,nameOfMovies,nameOfMovies)
+                list_view2.layoutManager = LinearLayoutManager(this@SecondActivity)
+               list_view2.adapter = MovieAdapter(nameOfMovies,nameOfMovies)
             }
 
             override fun onFailure(call: Call<Movie>?, t: Throwable?) {
-
+                Toast.makeText(this@SecondActivity,t?.message, Toast.LENGTH_SHORT).show()
             }
 
         })
