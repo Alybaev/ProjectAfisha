@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.cell_movie.view.*
 class MovieAdapter(var data: ArrayList<String>, var data2: ArrayList<String>,var data3: ArrayList<String>) : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {
         return  MovieHolder(LayoutInflater.from(parent.context).inflate(R.layout.cell_movie, null))
-
     }
 
     override fun getItemCount(): Int {

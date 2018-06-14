@@ -5,20 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Shedule_Activity">
+    tools:context=".SheduleActivity">
 
-    <TextView
-        android:id="@+id/title_movie"
-        android:layout_width="match_parent"
-        android:layout_height="37dp"
-        android:paddingStart="@dimen/padding_left_right"
-        android:paddingEnd="@dimen/padding_left_right"
-        android:paddingTop="6dp"
-
-        android:textColor="@color/colorPrimaryDark"
-        android:text="@string/title_movie"
-        android:textSize="@dimen/title_size"
-        app:layout_constraintBottom_toTopOf="@+id/list_view2"
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,13 +17,12 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_view2"
-        android:layout_width="367dp"
-        android:layout_height="495dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_movie" />
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
 </android.support.constraint.ConstraintLayout>

@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="secondary_color">#939393</color>
     <color name="hall_color">#008d18</color>
+    <color name="text_toolbar">#FFFFFF</color>
 </resources>
