@@ -30,10 +30,7 @@ class SheduleActivity : AppCompatActivity() {
         title = "Main"
 
 
-
-
         setSupportActionBar(findViewById(R.id.toolbar))
-
         init()
         getDataFromBack()
     }
