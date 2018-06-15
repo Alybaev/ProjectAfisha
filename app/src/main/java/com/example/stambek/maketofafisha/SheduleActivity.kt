@@ -1,14 +1,9 @@
 package com.example.stambek.maketofafisha
-
-import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.widget.Toast
 import com.example.stambek.maketofafisha.ModelOfApiCinema.Cinema
-import com.example.stambek.maketofafisha.R.layout.toolbar
 import com.example.stambek.maketofafisha.model.GenData
 import kotlinx.android.synthetic.main.activity_shedule_.*
 import retrofit2.Call
@@ -26,8 +21,7 @@ class SheduleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shedule_)
-        titleColor = Color.WHITE
-        title = "Main"
+        title = "Кинотеатры"
 
 
         setSupportActionBar(findViewById(R.id.toolbar))
