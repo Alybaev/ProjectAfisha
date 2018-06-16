@@ -6,4 +6,5 @@
     <color name="secondary_color">#939393</color>
     <color name="hall_color">#008d18</color>
     <color name="text_toolbar">#FFFFFF</color>
+    <color name="black">#000000</color>
 </resources>

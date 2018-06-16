@@ -2,4 +2,5 @@
     <string name="app_name">Киноафиша</string>
     <string name="title_movie">Фильмы</string>
     <string name="title_cinema">Кинотеатры</string>
+    <string name="information">Режиссер:%s\nАктеры:%s\nСтрана:%s\nПремьера:%s\nОценка:%s\n</string>
 </resources>

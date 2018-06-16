@@ -17,6 +17,7 @@ import retrofit2.Response
 class SecondActivity : AppCompatActivity() {
     var call2: Call<Movie>? = null
     var data: GenData? = null
+    var movies: Movie? = null
     var mAdapter: MovieAdapter? = null
     var idOfCinema : String? = null
 
@@ -33,7 +34,8 @@ class SecondActivity : AppCompatActivity() {
         val apiMovie = NetWork.retrofit.create(ApiMovie::class.java)
         call2 = apiMovie.getData()
         data = GenData(ArrayList(), ArrayList(),ArrayList())
-        mAdapter = MovieAdapter(data!!)
+        movies = Movie(ArrayList())
+        mAdapter = MovieAdapter(this@SecondActivity,data!!,movies!!)
         list_view2.layoutManager = LinearLayoutManager(this@SecondActivity)
         list_view2.adapter = mAdapter
     }
@@ -55,19 +57,19 @@ class SecondActivity : AppCompatActivity() {
     fun getDataFromBack(){
         call2!!.enqueue(object : Callback<Movie>{
             override fun onResponse(call: Call<Movie>?, response: Response<Movie>?) {
-                val movies = response!!.body()
+                movies = response!!.body()
                 for(i in 0 until movies?.result!!.size){
-                    for(j in 0 until  movies.result[i].sessions.size){
-                        if (movies.result[i].sessions[j].k_id == idOfCinema || idOfCinema == null){
-                            data!!.data1.add(movies.result[i].name)!!
-                            data!!.data2.add(movies.result[i].sessions[j].h_name)!!
-                            data!!.data3.add(pullOutTime(movies.result[i].sessions[j].sessions))
+                    for(j in 0 until  movies!!.result[i].sessions.size){
+                        if (movies!!.result[i].sessions[j].k_id == idOfCinema || idOfCinema == null){
+                            data!!.data1.add(movies!!.result[i].name)!!
+                            data!!.data2.add(movies!!.result[i].sessions[j].h_name)!!
+                            data!!.data3.add(pullOutTime(movies!!.result[i].sessions[j].sessions))
                         }
                     }
 
                 }
 
-                mAdapter!!.setMData(data!!)
+                mAdapter!!.setMData(data!!,movies!!)
             }
 
             override fun onFailure(call: Call<Movie>?, t: Throwable?) {
