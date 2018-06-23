@@ -1,9 +1,11 @@
-package com.example.stambek.maketofafisha
+package com.example.stambek.maketofafisha.ui.cinema
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
-import com.example.stambek.maketofafisha.ModelOfApiCinema.Cinema
+import com.example.stambek.maketofafisha.utils.ApiCinema
+import com.example.stambek.maketofafisha.R
+import com.example.stambek.maketofafisha.model.ModelOfApiCinema.Cinema
 import com.example.stambek.maketofafisha.model.GenData
 import kotlinx.android.synthetic.main.activity_shedule_.*
 import retrofit2.Call
@@ -12,7 +14,7 @@ import retrofit2.Response
 import com.example.stambek.maketofafisha.utils.NetWork
 
 
-class SheduleActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     var data: GenData? = null
     var mAdapter: CinemaAdapter? = null
@@ -44,7 +46,7 @@ class SheduleActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<Cinema>?, t: Throwable?) {
-                Toast.makeText(this@SheduleActivity, t?.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, t?.message, Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -53,8 +55,8 @@ class SheduleActivity : AppCompatActivity() {
         val apiCinema = NetWork.retrofit.create(ApiCinema::class.java)
         call = apiCinema.getData()
         data = GenData(ArrayList(), ArrayList(), ArrayList())
-        mAdapter = CinemaAdapter(this@SheduleActivity, data!!)
-        list_view.layoutManager = LinearLayoutManager(this@SheduleActivity)
+        mAdapter = CinemaAdapter(this@MainActivity, data!!)
+        list_view.layoutManager = LinearLayoutManager(this@MainActivity)
         list_view.adapter = mAdapter
 
     }

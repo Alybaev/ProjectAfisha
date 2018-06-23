@@ -1,6 +1,6 @@
-package com.example.stambek.maketofafisha
+package com.example.stambek.maketofafisha.utils
 
-import com.example.stambek.maketofafisha.ModelOfApiCinema.Cinema
+import com.example.stambek.maketofafisha.model.ModelOfApiCinema.Cinema
 import retrofit2.Call
 import retrofit2.http.GET
 

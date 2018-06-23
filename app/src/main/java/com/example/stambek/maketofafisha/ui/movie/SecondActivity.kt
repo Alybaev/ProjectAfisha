@@ -1,10 +1,12 @@
-package com.example.stambek.maketofafisha
+package com.example.stambek.maketofafisha.ui.movie
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.widget.Toast
-import com.example.stambek.maketofafisha.ModelOfApiMovie.Movie
+import com.example.stambek.maketofafisha.utils.ApiMovie
+import com.example.stambek.maketofafisha.R
+import com.example.stambek.maketofafisha.model.ModelOfApiMovie.Movie
 import com.example.stambek.maketofafisha.model.GenData
 import com.example.stambek.maketofafisha.utils.NetWork
 import kotlinx.android.synthetic.main.activity_second.*
@@ -35,7 +37,7 @@ class SecondActivity : AppCompatActivity() {
         call2 = apiMovie.getData()
         data = GenData(ArrayList(), ArrayList(),ArrayList())
         movies = Movie(ArrayList())
-        mAdapter = MovieAdapter(this@SecondActivity,data!!,movies!!)
+        mAdapter = MovieAdapter(this@SecondActivity, data!!, movies!!)
         list_view2.layoutManager = LinearLayoutManager(this@SecondActivity)
         list_view2.adapter = mAdapter
     }

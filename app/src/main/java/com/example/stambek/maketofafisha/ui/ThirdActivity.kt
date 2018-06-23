@@ -1,15 +1,20 @@
-package com.example.stambek.maketofafisha
+package com.example.stambek.maketofafisha.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.bumptech.glide.Glide
+import com.example.stambek.maketofafisha.R
+import com.example.stambek.maketofafisha.model.InformationMovie
+import com.example.stambek.maketofafisha.utils.Constants.Companion.MOVIE_INFO_KEY
 
 import kotlinx.android.synthetic.main.activity_third.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class ThirdActivity : AppCompatActivity() {
+    var infoMovie:InformationMovie?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,14 +28,19 @@ class ThirdActivity : AppCompatActivity() {
     }
     fun initReceivedData(){
         toolbar.title = intent.getStringExtra("nameOfMovie")
-        Information.actors = convertionHtml(Information.actors)
-        Information.rejisser = convertionHtml(Information.rejisser)
-        information.text = getString(R.string.information,Information.rejisser,Information.actors,Information.country,Information.premier,Information.votes)
-        var img_url = "${"https://kinoafisha.ua"+Information.image}"
-        imageView.webViewClient = Callback()
-        val webSettings = imageView.settings
-        webSettings.builtInZoomControls = true
-        imageView.loadUrl(img_url)
+        infoMovie = intent.getSerializableExtra(MOVIE_INFO_KEY) as InformationMovie
+
+        var actors = convertionHtml(infoMovie!!.actors)
+        var rejisser = convertionHtml(infoMovie!!.rejisser)
+
+        information.text = getString(R.string.information, rejisser, actors, infoMovie!!.country, infoMovie!!.premier, infoMovie!!.votes)
+
+        var img_url = "${"https://kinoafisha.ua"+ infoMovie!!.image}"
+
+        img_url = img_url.replace("sm_", "")
+        Glide.with(this)
+                .load(img_url)
+                .into(imageView)
 
     }
     private fun initToolbar() {
@@ -39,6 +49,7 @@ class ThirdActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
         if (item!!.itemId == android.R.id.home)
             onBackPressed()
 
@@ -49,6 +60,7 @@ class ThirdActivity : AppCompatActivity() {
         var actorsArr = actors.toCharArray()
         var result = ""
         var i = 1
+
         while (i < actors.length){
             if(actorsArr[i - 1] == '>'){
                 while(actorsArr[i] != '<'){
@@ -58,6 +70,7 @@ class ThirdActivity : AppCompatActivity() {
             }
             i++
         }
+
         return result
     }
 

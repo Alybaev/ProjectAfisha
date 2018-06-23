@@ -1,4 +1,4 @@
-package com.example.stambek.maketofafisha
+package com.example.stambek.maketofafisha.ui.cinema
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.stambek.maketofafisha.R
+import com.example.stambek.maketofafisha.ui.movie.SecondActivity
 import com.example.stambek.maketofafisha.model.GenData
 import kotlinx.android.synthetic.main.cell_cinema.view.*
 

@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SheduleActivity">
+        <activity android:name=".ui.cinema.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,13 +19,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SecondActivity"
-            android:parentActivityName=".SheduleActivity">
+            android:name=".ui.movie.SecondActivity"
+            android:parentActivityName=".ui.cinema.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".SheduleActivity" />
+                android:value=".ui.cinema.MainActivity" />
         </activity>
-        <activity android:name=".ThirdActivity"></activity>
+        <activity android:name=".ui.ThirdActivity"></activity>
     </application>
 
 </manifest>

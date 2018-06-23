@@ -5,7 +5,7 @@
     android:background="#ffe596"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ThirdActivity">
+    tools:context=".ui.ThirdActivity">
     <include
         android:id="@+id/include3"
         layout="@layout/toolbar"
@@ -13,7 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <WebView
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="173dp"
         android:layout_height="264dp"

@@ -5,7 +5,7 @@
     android:id="@+id/cinema_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SheduleActivity">
+    tools:context=".ui.cinema.MainActivity">
 
     <include
         android:id="@+id/include2"
