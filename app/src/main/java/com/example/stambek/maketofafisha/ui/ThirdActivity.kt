@@ -63,7 +63,7 @@ class ThirdActivity : AppCompatActivity() {
 
         while (i < actors.length){
             if(actorsArr[i - 1] == '>'){
-                while(actorsArr[i] != '<'){
+                while(i < actors.length && actorsArr[i]  != '<' ){
                     result += actorsArr[i]
                     i++
                 }
