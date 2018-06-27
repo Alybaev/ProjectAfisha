@@ -40,32 +40,24 @@ class CinemaAppTest {
     val mActivityRule = ActivityTestRule(
             MainActivity::class.java)
 
-    @Before
-    @Throws(Exception::class)
-    fun setUp() {
-        Intents.init()
-    }
-
-
     @Test
     fun checkWorkOfAfisha() {
-        val mainActivityName = MainActivity::class.java!!.name
-        IdlingRegistry.getInstance().register(WaitActivityIsResumedIdlingResource(mainActivityName))
-        intended(hasComponent(MainActivity::class.java!!.name))
+
         val recyclerView = mActivityRule.activity.list_view
         val itemCount = recyclerView.adapter.itemCount
 
         Log.d("Item count is ", itemCount.toString())
-        //  choose random number for testing item in Recycle view
-
 
         // Scroll to end of page with position in Recycle view 1
+        scrollAndClickRecycle(itemCount)
+
+        //check was Second Activity launched
         val secondActivityName = SecondActivity::class.java!!.name
         IdlingRegistry.getInstance().register(WaitActivityIsResumedIdlingResource(secondActivityName))
         intended(hasComponent(SecondActivity::class.java!!.name))
         scrollAndClickRecycle(itemCount)
         // Scroll to end of page with position in Recycle view 2
-//        rndNum = rnd.nextInt(itemCount - 1)
+
         onView(withId(R.id.list_view2))
                 .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(itemCount - 1))
         // Perform click on definite view in Recycle view 2
